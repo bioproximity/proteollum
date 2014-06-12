@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# this will run after a commit using incron
+US=`stat -c %U $0`
+RE=`dirname $0`/wikidata
+logger "ZZZ, running as `whoami`, will su to $US to push $RE"
+su -l $US -c "cd $RE && git push origin master"
